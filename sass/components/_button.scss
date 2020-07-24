@@ -1,4 +1,6 @@
 .btn {
+	// button elememt doesnt have the link/visited pseudo classes
+	&,
 	&:link,
 	&:visited {
 		font-size: $default-font-size;
@@ -10,6 +12,10 @@
 		position: relative;
 
 		transition: all 0.2s;
+
+		// changes for <button> elemenet
+		border: none;
+		cursor: pointer;
 	}
 
 	&:hover {
@@ -23,7 +29,9 @@
 		}
 	}
 
-	&:active {
+	&:active,
+	&:focus {
+		outline: none;
 		transform: translateY(-0.1rem);
 		box-shadow: 0 0.5rem 0.1rem rgba($color-black, 0.3);
 	}
