@@ -1,10 +1,42 @@
-// What the clearfix does is to append a pseudo element
-// after the element which will then clear these floats.
-
+/* What the clearfix does is to append a pseudo element after the element which will then clear these floats. */
 @mixin clearfix {
 	&::after {
 		content: '';
 		display: table;
 		clear: both;
+	}
+}
+
+// MEDIA QUERY MANAGER
+
+/*
+media queries aren't affected by the root font-size element.
+it always is equal to the font coming from the browser
+1em = 16px 
+*/
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		// content directive allows us to pass a block of code to the mixin
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-port {
+		@media (max-width: 56.5em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-land {
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == big-desktop {
+		@media (min-width: 112.5em) {
+			@content;
+		}
 	}
 }
